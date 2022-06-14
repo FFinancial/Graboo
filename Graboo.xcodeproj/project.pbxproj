@@ -14,6 +14,7 @@
 		80B3AC6628583CBD00CB7B31 /* GrabooTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B3AC6528583CBD00CB7B31 /* GrabooTests.swift */; };
 		80B3AC7028583CBD00CB7B31 /* GrabooUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B3AC6F28583CBD00CB7B31 /* GrabooUITests.swift */; };
 		80B3AC7228583CBD00CB7B31 /* GrabooUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B3AC7128583CBD00CB7B31 /* GrabooUITestsLaunchTests.swift */; };
+		80B3AC8028584E3700CB7B31 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B3AC7F28584E3700CB7B31 /* Client.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		80B3AC6B28583CBD00CB7B31 /* GrabooUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GrabooUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		80B3AC6F28583CBD00CB7B31 /* GrabooUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrabooUITests.swift; sourceTree = "<group>"; };
 		80B3AC7128583CBD00CB7B31 /* GrabooUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrabooUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		80B3AC7F28584E3700CB7B31 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 		80B3AC5328583CBB00CB7B31 /* Graboo */ = {
 			isa = PBXGroup;
 			children = (
+				80B3AC7E28584E2100CB7B31 /* lib */,
 				80B3AC5428583CBB00CB7B31 /* GrabooApp.swift */,
 				80B3AC5628583CBB00CB7B31 /* ContentView.swift */,
 				80B3AC5828583CBD00CB7B31 /* Assets.xcassets */,
@@ -125,6 +128,14 @@
 				80B3AC7128583CBD00CB7B31 /* GrabooUITestsLaunchTests.swift */,
 			);
 			path = GrabooUITests;
+			sourceTree = "<group>";
+		};
+		80B3AC7E28584E2100CB7B31 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				80B3AC7F28584E3700CB7B31 /* Client.swift */,
+			);
+			path = lib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,6 +270,7 @@
 			files = (
 				80B3AC5728583CBB00CB7B31 /* ContentView.swift in Sources */,
 				80B3AC5528583CBB00CB7B31 /* GrabooApp.swift in Sources */,
+				80B3AC8028584E3700CB7B31 /* Client.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,7 +439,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -457,7 +469,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

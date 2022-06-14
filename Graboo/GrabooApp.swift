@@ -12,6 +12,7 @@ struct GrabooApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(ModelData(searchTerms: ["hatsune_miku", "rating:general"]))
         }
     }
 }
