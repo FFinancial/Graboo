@@ -7,23 +7,11 @@
 
 import SwiftUI
 
-final class ModelData: ObservableObject {
+struct ContentView<C: BooruClient>: View {
     
-    @Published private(set) var imgs: [GelbooruImage] = []
-    var searchTerms: [String]
-    
-    init(searchTerms: [String]) {
-        self.searchTerms = searchTerms
-        GelbooruClient().searchTagImages(tags: searchTerms) { data, error in
-            self.imgs = error != nil ? [] : data!
-        }
-    }
-
-}
-
-struct ContentView: View {
-    
-    @EnvironmentObject var model: ModelData
+    var booru: C
+    @State var searchTerm: String
+    @State private var pics: [C.T] = []
     
     let cols = [
         GridItem(.flexible()),
@@ -31,26 +19,37 @@ struct ContentView: View {
         GridItem(.flexible()),
     ]
     
+    func reloadSearchResults(_ tags: String) {
+        self.booru.searchTagImages(tags: tags) { (data: [C.T]?, error) in
+            self.pics = error != nil ? [] : data!
+        }
+    }
+    
+    
     var body: some View {
         NavigationView {
             ScrollView {
-                Text(model.searchTerms.joined(separator: ", "))
+                Text(self.searchTerm)
                     .font(.headline)
-                LazyVGrid(columns: cols, spacing: 10) {
-                    ForEach(model.imgs, id: \.self) { pic in
-                        VStack {
-                            AsyncImage(url: URL(string: pic.sampleUrl)) { image in
-                                image.resizable().aspectRatio(contentMode: .fit)
-                            } placeholder: {
-                                ProgressView()
-                            }
-                            .frame(width: 100, height: 100 * CGFloat(pic.sampleHeight)/CGFloat(pic.sampleWidth))
-                            Text(String(pic.id))
+                LazyVGrid(columns: cols, spacing: 2) {
+                    ForEach(self.pics, id: \.self) { pic in
+                        AsyncImage(url: URL(string: pic.displayUrl())) { image in
+                            image.resizable().aspectRatio(contentMode: .fit)
+                        } placeholder: {
+                            ProgressView()
                         }
+                        .frame(width: 100, height: 150)
                     }
                 }
             }
-            .navigationTitle("Graboo")
+        }
+        .navigationTitle("Graboo")
+        .searchable(
+            text: self.$searchTerm,
+            placement: .sidebar
+        )
+        .onSubmit(of: .search) {
+            reloadSearchResults(self.searchTerm)
         }
     }
 }
@@ -58,8 +57,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     
     static var previews: some View {
-        ContentView()
-            .environmentObject(ModelData(searchTerms: ["hatsune_miku", "rating:general"]))
+        ContentView(booru: SafebooruClient(), searchTerm: "doki_doki_literature_club")
     }
     
 }

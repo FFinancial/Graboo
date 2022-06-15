@@ -11,8 +11,7 @@ import SwiftUI
 struct GrabooApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environmentObject(ModelData(searchTerms: ["hatsune_miku", "rating:general"]))
+            ContentView(booru: SafebooruClient(), searchTerm: "doki_doki_literature_club")
         }
     }
 }
